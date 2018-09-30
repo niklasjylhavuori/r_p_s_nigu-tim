@@ -3,7 +3,6 @@
 #Spelaren får själv välja hur många poäng som krävs för att vinna.
 #Spelet håller på tills antingen spelaren eller datorn har fått den mängd poäng som krävs för att vinna.
 
-#Det kommer att behövas random som måste importeras. Det kommer att krävas att resultaten sparas mellan rundorna.
 
 
 
@@ -13,16 +12,18 @@ import random
 print "*******************"
 print "ROCK PAPER SCISSORS"
 print "*******************"
-#-- coding: utf-8 --
-import random
 
+
+#De här variablerna existerar för att lätta upp koden, värdena i form av strings har ingen betydelse för programmet.
 HUMAN    = "H"
 CPU      = "C"
 TIE      = "T"
 
+"""Koden granskar vilken spelare som vann. Man behöver endast skriva ut villkoren för spelarens vinst
+i och med att om de inte uppfylls och det inte blir oavgjort så leder det automatiskt till datorns vinst"""
 def checkResults(user, computer):
     if user == computer:
-        print("It's a tie!")
+        print("Oavgjort!")
         return TIE
 
     elif user == 0 and computer == 1:
@@ -38,6 +39,7 @@ def checkResults(user, computer):
     print "Du förlorade."
     return CPU
 
+#Funktionen som printar ut den rätta vinnaren.
 def printWinner( humanCount, computerCount ):
     if humanCount > computerCount:
         print( "Du vann spelet!" )
@@ -45,10 +47,10 @@ def printWinner( humanCount, computerCount ):
         print( "Du förlorade spelet." )
 
 
-
+#Huvudkoden för spelet som tar hand om de andra funktionerna
 def main():
     winningScore = input("Hur många poäng krävs för att vinna?   ")
-    # counters for winning rounds
+    
     humanCount = 0
     computerCount = 0
 
