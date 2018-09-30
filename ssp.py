@@ -7,7 +7,7 @@
 
 #-- coding: utf-8 --
 import random
-import time
+
 
 print "*******************"
 print "ROCK PAPER SCISSORS"
@@ -24,23 +24,30 @@ user_score = 0
 computer_score = 0
 
 def checkResults(user,computer):
-    while user_score <= total_score or computer_score <= total_score :
-        #Spelaren vinner:
-        if user_choice == 0 and computer_choice == 1:
-            user_score += 1
-            print "Du vann!"
-        elif user_choice == 1 and computer_choice == 2:
-            user_score += 1
-            print "Du vann!"
-        elif user_choice == 2 and computer_choice == 0:
-            user_score += 1
-            print "Du vann!"
-        #Datorn vinner:
-        else:
-            print "Du förlorade."
-            computer_choice +=1
+    #Spelaren vinner:
+    if user == 0 and computer == 1:
+        user_score += 1
+        print "Du vann rundan!"
+    elif user == 1 and computer == 2:
+        user_score += 1
+        print "Du vann rundan!"
+    elif user == 2 and computer == 0:
+        user_score += 1
+        print "Du vann rundan!"
+    #Datorn vinner:
+    else:
+        print "Du förlorade rundan."
+        computer_score +=1
 
-def round(): 
-user_choice = input("1:Sten, 2:Sax, 3:Påse")
-#Kolla om spelarens input är mellan 1-3 (0=sten, 1=sax, 2= påse)
-computer_choice = random.randint(0,2)
+def round():
+    user_choice = input("Välj 1:Sten, 2:Sax, 3:Påse  ")
+    #Kolla om spelarens input är mellan 1-3 (0=sten, 1=sax, 2= påse)
+    computer_choice = random.randint(0,2)
+    checkResults(user_choice,computer_choice)
+    if user_score == total_score:
+        print "Du vann spelet!"
+    elif computer_score == total_score:
+        print "Du förlorade spelet."
+    else:
+        round()
+round()
