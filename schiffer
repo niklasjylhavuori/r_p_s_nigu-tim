@@ -1,0 +1,26 @@
+import string
+
+def schiffer():
+# Read info from user
+    message = raw_input("Input the message you want to encrypt: ")
+    key = input("Input the key (an integer value): ")
+
+# At the beginning, the encrypted message is empty
+    encrypted_message = ""
+
+# Encrypt each character in the message separately
+    for character in message: 
+        if character in string.uppercase:
+                old_ascii = ord(character)
+                new_ascii = (old_ascii - key -65) %26 +65
+                encrypted_message += chr(new_ascii)
+
+        elif character in string.lowercase:
+                    old_ascii = ord(character)
+                    new_ascii = (old_ascii - key - 97) %26 +97
+                    encrypted_message += chr(new_ascii)
+        else:
+            encrypted_message += character
+        
+    print encrypted_message
+schiffer()
